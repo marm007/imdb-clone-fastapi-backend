@@ -11,9 +11,6 @@ router = APIRouter()
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = service.get_user_by_username_or_uid(
         db, username=user.username, uid=user.uid)
-    print("aaddaad")
-    print(user)
-    print(db_user)
     if db_user:
         error_message = "Something went wron"
         if db_user.uid == user.uid:
